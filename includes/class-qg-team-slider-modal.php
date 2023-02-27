@@ -78,6 +78,7 @@ class Qg_Team_Slider_Modal
 
 		$this->load_dependencies();
 		$this->set_locale();
+		$this->define_all_external_apis();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -125,6 +126,12 @@ class Qg_Team_Slider_Modal
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-qg-team-slider-modal-public.php';
 
+
+		/**
+		 * The class responsible for defining all external apis
+		*/
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-qg-team-slider-modal-apis.php';
+		
 		$this->loader = new Qg_Team_Slider_Modal_Loader();
 
 	}
@@ -145,6 +152,17 @@ class Qg_Team_Slider_Modal
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 
+	}
+
+	/**
+	 * Initiate all of external apis of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_all_external_apis() {
+		$plugin_api = new Qg_Team_Slider_Modal_APIs();
+		$this->loader->add_action('rest_api_init', $plugin_api, 'register_all_controllers');
 	}
 
 	/**
@@ -180,6 +198,11 @@ class Qg_Team_Slider_Modal
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+
+		// add shortcode
+		if (!is_admin()) {
+			add_shortcode('qg_tsm_sc', array(&$plugin_public, 'qg_tsm_view'));
+		}
 
 	}
 
