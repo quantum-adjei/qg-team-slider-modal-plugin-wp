@@ -1,12 +1,12 @@
-<template id="qg-tsm-new-member">
-    <v-btn size="small" class="font-weight-medium" @click="dialog = true" color="#681A55" variant="outlined"
+<template id="qg-tsm-edit-member">
+    <v-btn size="small" class="font-weight-medium" @click="dialog = true" color="#681A55" variant="plain"
         elevation="0">
-        New Member
+        Edit
     </v-btn>
 
     <v-dialog v-model="dialog" transition="dialog-top-transition" persistent max-width="700px" scrollable>
         <v-card>
-            <v-toolbar title="New member" density="compact">
+            <v-toolbar title="Edit member" density="compact">
                 <v-spacer></v-spacer>
                 <v-toolbar-items>
                     <v-btn v-if="!loading" icon dark @click="closeModal">

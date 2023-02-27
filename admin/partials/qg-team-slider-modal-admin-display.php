@@ -16,7 +16,7 @@ require_once plugin_dir_path(dirname(dirname(__FILE__))) . 'data/class-qg-team-s
 $qg_tsm_table_instance = new Qg_Team_Slider_Modal_List_Config();
 ?>
 
-<div id="qg_team_slider_modal">
+<div id="qg_team_slider_modal_admin">
     <div class="px-5">
         <h1 class="text-h4">
             <span>

@@ -20,7 +20,8 @@
  * @subpackage Qg_Team_Slider_Modal/admin
  * @author     Quantum Devs <dadjei@quantumgroupgh.com>
  */
-class Qg_Team_Slider_Modal_Admin {
+class Qg_Team_Slider_Modal_Admin
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,7 +48,8 @@ class Qg_Team_Slider_Modal_Admin {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
@@ -59,7 +61,8 @@ class Qg_Team_Slider_Modal_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,16 +76,16 @@ class Qg_Team_Slider_Modal_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/qg-team-slider-modal-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/qg-team-slider-modal-admin.css', array(), $this->version, 'all');
 
 		// robotoFont cdn
-		wp_enqueue_style( $this->plugin_name.'-robotoFont', "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900", array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name . '-robotoFont', "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900", array(), $this->version, 'all');
 
 		// material icon cdn
-		wp_enqueue_style( $this->plugin_name.'-material_icon', "https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css", array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name . '-material_icon', "https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css", array(), $this->version, 'all');
 
 		// vuetify css cdn
-		wp_enqueue_style( $this->plugin_name.'-vuetifyCSS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.css", array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name . '-vuetifyCSS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.css", array(), $this->version, 'all');
 
 	}
 
@@ -91,7 +94,8 @@ class Qg_Team_Slider_Modal_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -105,22 +109,26 @@ class Qg_Team_Slider_Modal_Admin {
 		 * class.
 		 */
 
-		// Vue js cdn
-		wp_enqueue_script( $this->plugin_name.'-vue', "https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js", array(), $this->version, true);
+		// enqueue scripts if admin page = qg_team_slider_modal
+		if ($_REQUEST['page'] == 'qg_team_slider_modal') {
+			// Vue js cdn
+			wp_enqueue_script($this->plugin_name . '-vue', "https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js", array(), $this->version, true);
 
-		// vuetify js cdn
-		wp_enqueue_script( $this->plugin_name.'-vuetifyJS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.js", array(), $this->version, true);
-		
-		//axios js cdn
-		wp_enqueue_script( $this->plugin_name.'-axois', "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", array(), $this->version, true);
-		
-		// Custom plugin js file
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/qg-team-slider-modal-admin.js', array(), $this->version, false );
+			// vuetify js cdn
+			wp_enqueue_script($this->plugin_name . '-vuetifyJS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.js", array(), $this->version, true);
+
+			//axios js cdn
+			wp_enqueue_script($this->plugin_name . '-axois', "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", array(), $this->version, true);
+
+			// Custom plugin js file
+			wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/qg-team-slider-modal-admin.js', array(), $this->version, false);
+		}
 
 	}
 
 	// register admin menus
-	public function register_admin_menus() {
+	public function register_admin_menus()
+	{
 		add_menu_page(
 			__('QG Team Slider Modal', 'qg-team-slider-modal'),
 			__('QG-TSM', 'qg-tsm'),
@@ -143,9 +151,10 @@ class Qg_Team_Slider_Modal_Admin {
 	/**
 	 * Function to include the admin page of the plugin
 	 * @since 1.0.0
-	*/
-	public function qg_team_slider_admin_view() {
-		if(is_admin()){
+	 */
+	public function qg_team_slider_admin_view()
+	{
+		if (is_admin()) {
 			include_once 'partials/qg-team-slider-modal-admin-display.php';
 		}
 	}
