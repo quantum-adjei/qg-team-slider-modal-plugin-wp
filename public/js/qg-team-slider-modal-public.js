@@ -1,32 +1,64 @@
-(function( $ ) {
-	'use strict';
+window.onload = () => {
+	let qg_team_slider_modal_public = document.getElementById('qg_team_slider_modal_public');
+	qg_team_slider_modal_public.style.display = 'initial';
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+	// vue components
+	const { createApp } = Vue
+	const { createVuetify } = Vuetify
 
-})( jQuery );
+	const vuetify = createVuetify();
+
+	const app = createApp({
+		data() {
+			return {
+				test: "Hello world",
+			}
+		}
+	});
+
+	app.component('team-view-popup', {
+		template: "#qs-tsm-view-popup",
+		props: {
+			image_url: '',
+			bio: '',
+			position: '',
+			full_name: ''
+		},
+		data() {
+			return {
+				dialog: false,
+			}
+		},
+	})
+
+	app.use(vuetify).mount('#qg_team_slider_modal_public');
+
+
+	// swiperjs configure
+	let mySwiper = new Swiper('.qg-tsm-swiper', {
+		loop: false,
+		slidesPerView: 4,
+		// spaceBetween: 10,
+		navigation: {
+		  nextEl: ".swiper-button-next",
+		  prevEl: ".swiper-button-prev",
+		}, breakpoints: {
+		  "@0.00": {
+			slidesPerView: 1,
+			spaceBetween: 10,
+		  },
+		  "@0.75": {
+			slidesPerView: 2,
+			spaceBetween: 20,
+		  },
+		  "@1.00": {
+			slidesPerView: 3,
+			spaceBetween: 20,
+		  },
+		  "@1.50": {
+			slidesPerView: 4,
+			spaceBetween: 20,
+		  },
+		},
+	  });
+}

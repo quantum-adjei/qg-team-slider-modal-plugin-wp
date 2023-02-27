@@ -20,7 +20,8 @@
  * @subpackage Qg_Team_Slider_Modal/public
  * @author     Quantum Devs <dadjei@quantumgroupgh.com>
  */
-class Qg_Team_Slider_Modal_Public {
+class Qg_Team_Slider_Modal_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,7 +48,8 @@ class Qg_Team_Slider_Modal_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
@@ -59,7 +61,8 @@ class Qg_Team_Slider_Modal_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +76,19 @@ class Qg_Team_Slider_Modal_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/qg-team-slider-modal-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/qg-team-slider-modal-public.css', array(), $this->version, 'all');
 
+		// robotoFont cdn
+		wp_enqueue_style($this->plugin_name . '-robotoFont', "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900", array(), $this->version, 'all');
+
+		// material icon cdn
+		wp_enqueue_style($this->plugin_name . '-material_icon', "https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css", array(), $this->version, 'all');
+
+		// vuetify css cdn
+		wp_enqueue_style($this->plugin_name . '-vuetifyCSS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.css", array(), $this->version, 'all');
+
+		// swiperJS
+		wp_enqueue_style($this->plugin_name . '-swiperCSS', "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css", array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +96,8 @@ class Qg_Team_Slider_Modal_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,8 +111,26 @@ class Qg_Team_Slider_Modal_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/qg-team-slider-modal-public.js', array( 'jquery' ), $this->version, false );
+		// Vue js cdn
+		wp_enqueue_script($this->plugin_name . '-vue', "https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js", array(), $this->version, true);
+
+		// vuetify js cdn
+		wp_enqueue_script($this->plugin_name . '-vuetifyJS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.js", array(), $this->version, true);
+
+		//axios js cdn
+		wp_enqueue_script($this->plugin_name . '-axois', "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", array(), $this->version, true);
+
+		// swiper js
+		wp_enqueue_script($this->plugin_name . '-swiper', "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js", array(), $this->version, true);
+
+		// custom js
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/qg-team-slider-modal-public.js', array('jquery'), $this->version, false);
 
 	}
 
+	// Return ui template when shortcode is called
+	public function qg_tsm_view()
+	{
+		include_once 'partials/qg-team-slider-modal-public-display.php';
+	}
 }
