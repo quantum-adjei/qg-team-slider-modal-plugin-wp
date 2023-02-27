@@ -135,7 +135,7 @@ class Qg_Team_Slider_Modal_Db_Config
      *
      * @since 1.0.0
      */
-    public function qg_add_new_team_member()
+    public function qg_new_team_member()
     {
         global $wpdb;
         return $wpdb->insert("{$this->qg_table_name}", array(

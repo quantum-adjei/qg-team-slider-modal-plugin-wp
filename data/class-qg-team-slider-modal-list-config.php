@@ -91,7 +91,8 @@ class Qg_Team_Slider_Modal_List_Config extends WP_List_Table
 
         $actions = [
             'delete' => sprintf('<a href="?page=%s&action=%s&qg_tsm_delete=%s&_wpnonce=%s">Delete</a>', esc_attr($_REQUEST['page']), 'delete', absint($item['id']), $delete_nonce),
-            // 'edit' => sprintf('<a href="?page=%s&qg_sf_edit=%s">Edit</a>', esc_attr('qg_station_finder_edit_station'), absint($item['id'])),
+            'edit' => sprintf('<a href="?page=%s&qg_sf_edit=%s">Edit</a>', esc_attr('qg_station_finder_edit_station'), absint($item['id'])),
+            
             // 'view' => sprintf('
             //     <a href="#TB_inline?&width=600&height=550&inlineId=qg-sf-map-preview-%s" class="thickbox">View</a>
             //     <div id="qg-sf-map-preview-%s" style="display:none;">
