@@ -91,16 +91,7 @@ class Qg_Team_Slider_Modal_List_Config extends WP_List_Table
 
         $actions = [
             'delete' => sprintf('<a href="?page=%s&action=%s&qg_tsm_delete=%s&_wpnonce=%s">Delete</a>', esc_attr($_REQUEST['page']), 'delete', absint($item['id']), $delete_nonce),
-            'edit' => sprintf('<a href="?page=%s&qg_sf_edit=%s">Edit</a>', esc_attr('qg_station_finder_edit_station'), absint($item['id'])),
-            
-            // 'view' => sprintf('
-            //     <a href="#TB_inline?&width=600&height=550&inlineId=qg-sf-map-preview-%s" class="thickbox">View</a>
-            //     <div id="qg-sf-map-preview-%s" style="display:none;">
-            //         <div id="map">
-            //             <iframe width="600" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=' . $item['longitude'] . ',' . $item['latitude'] . ',' . $item['longitude'] . ',' . $item['latitude'] . '&amp;layer=mapnik&amp;marker=' . $item['latitude'] . ',' . $item['longitude'] . '" style="border: 1px solid black"></iframe>
-            //         </div>
-            //     </div>
-            // ', absint($item['id']), absint($item['id'])),
+            'edit' => sprintf('<Edit-Team-Modal full_name="%s" id="%s" position="%s" bio="%s"></Edit-Team-Modal>', $item['full_name'], absint($item['id']), $item['position'], $item['bio']),
         ];
 
         return $title . $this->row_actions($actions);

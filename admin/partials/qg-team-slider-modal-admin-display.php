@@ -36,4 +36,5 @@ $qg_tsm_table_instance = new Qg_Team_Slider_Modal_List_Config();
 </div>
 
 <?php include_once dirname(__FILE__) . '/components/qg-tsm-new-member.php'; ?>
+<?php include_once dirname(__FILE__) . '/components/qg-tsm-edit-member.php'; ?>
 <?php wp_footer(); ?>

@@ -87,5 +87,44 @@ window.onload = () => {
 		}
 	})
 
+	app.component('edit-team-modal', {
+		template: '#qg-tsm-edit-member',
+		props: {
+			id: "",
+			full_name: "",
+			position: "",
+			bio: "",
+			image: []
+		}, data() {
+			return {
+				dialog: false,
+				error: "",
+				success: "",
+				formObj: {
+					full_name: this.full_name,
+					position: this.position,
+					image: [],
+					bio: this.bio
+				},
+				loading: false
+			}
+		}, methods: {
+			editMember(){
+				console.log(this.formObj)
+			},
+			closeModal() {
+				this.loading = false;
+				this.error = "";
+				this.formObj = {
+					full_name: this.full_name,
+					position: this.position,
+					image: [],
+					bio: this.bio
+				};
+				this.dialog = false;
+			}
+		}
+	})
+
 	app.use(vuetify).mount('#qg_team_slider_modal_admin')
 }

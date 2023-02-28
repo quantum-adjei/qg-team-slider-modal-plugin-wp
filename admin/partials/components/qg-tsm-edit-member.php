@@ -1,5 +1,5 @@
 <template id="qg-tsm-edit-member">
-    <v-btn size="small" class="font-weight-medium" @click="dialog = true" color="#681A55" variant="plain"
+    <v-btn size="small" class="font-weight-medium" @click="dialog = true" color="#681A55" variant="text"
         elevation="0">
         Edit
     </v-btn>
@@ -17,7 +17,7 @@
             <v-card-text>
                 <p v-if="error" class="text-body-1 font-weight-medium text-error text-center mb-2">{{ error }}</p>
                 <p v-if="success" class="text-body-1 font-weight-medium text-success text-center mb-2">{{ success }}</p>
-                <v-form @submit.prevent="newMember" class="mb-3">
+                <v-form @submit.prevent="editMember" class="mb-3">
                     <v-row justify="center">
                         <v-col cols="12" md="6">
                             <v-text-field density="compact" variant="outlined" v-model="formObj.full_name"
@@ -34,7 +34,7 @@
                                 variant="outlined" hide-details="true" prepend-icon="mdi-camera"></v-file-input>
                         </v-col>
                         <v-col cols="12">
-                            <v-textarea v-model="formObj.bio" label="Label" variant="outlined"
+                            <v-textarea v-model="formObj.bio" label="Bio" variant="outlined"
                                 hide-details="true"></v-textarea>
                         </v-col>
                         <v-col cols="4">

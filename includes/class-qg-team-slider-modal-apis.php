@@ -42,6 +42,22 @@ class Qg_Team_Slider_Modal_APIs
     }
 
 
+    public function edit_team_member($data) {
+
+        // if($_FILES['image']) {
+        //     $image_url = Qg_Team_Slider_Modal_Helpers::UploadImageFromRest();
+        // }
+
+        // $this->qg_tsm_table_instance->full_name = $data['full_name'];
+        // $this->qg_tsm_table_instance->position = $data['position'];
+        // $this->qg_tsm_table_instance->bio = $data['bio'];
+        // $this->qg_tsm_table_instance->image_url = $image_url;
+        // $this->qg_tsm_table_instance->qg_update_team_member_info($data['id']);
+
+        return rest_ensure_response("success");
+    }
+
+
     /**
      * Register all API controllers
      *

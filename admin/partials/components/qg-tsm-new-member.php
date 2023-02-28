@@ -34,7 +34,7 @@
                                 variant="outlined" hide-details="true" prepend-icon="mdi-camera"></v-file-input>
                         </v-col>
                         <v-col cols="12">
-                            <v-textarea v-model="formObj.bio" label="Label" variant="outlined"
+                            <v-textarea v-model="formObj.bio" label="Bio" variant="outlined"
                                 hide-details="true"></v-textarea>
                         </v-col>
                         <v-col cols="4">
