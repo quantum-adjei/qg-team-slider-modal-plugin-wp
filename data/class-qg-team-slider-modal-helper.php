@@ -25,13 +25,15 @@ class Qg_Team_Slider_Modal_Helpers
         $image_types = array("image/jpg", "image/jpeg", "image/png", "image/webp");
 
         // check if image field exists
-        if (empty($_FILES['image'])) {
-            return rest_ensure_response(
-                new WP_REST_Response(
-                    array('message' => 'Please upload member image'),
-                    400
-                )
-            );
+        if (empty($_FILES['image']['name'])) {
+            return 'https://lippianfamilydentistry.net/wp-content/uploads/2015/11/user-default.png';
+            
+            // rest_ensure_response(
+            //     new WP_REST_Response(
+            //         array('message' => 'Please upload member image'),
+            //         400
+            //     )
+            // );
         }
 
         // it allows us to use wp_handle_upload() function
