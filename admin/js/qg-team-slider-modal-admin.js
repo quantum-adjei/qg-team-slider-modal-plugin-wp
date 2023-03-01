@@ -109,8 +109,49 @@ window.onload = () => {
 				loading: false
 			}
 		}, methods: {
-			editMember(){
-				console.log(this.formObj)
+			async editMember() {
+				this.error = "";
+				if (!this.formObj.full_name || !this.formObj.position || !this.formObj.bio) {
+					this.loading = false;
+					return this.error = "Please all fields are required (except image)"
+				}
+
+				let formdata = new FormData
+				formdata.append("full_name", this.formObj.full_name);
+				formdata.append("position", this.formObj.position);
+				formdata.append("bio", this.formObj.bio);
+				formdata.append("id", this.id);
+				
+				if (this.formObj.image[0]) {
+					formdata.append("image", this.formObj.image[0])
+				}
+
+				let res = await axios({
+					method: 'post',
+					url: '/wp-json/tsm/v1/edit',
+					data: formdata,
+					responseType: 'json',
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				}).then(async function (res) {
+					return res.data
+				}).catch((e) => {
+					if (e.response?.data) {
+						return e.response.data.message
+					}
+				})
+
+				if (res == "success") {
+					this.success = "Member data edited successfully"
+					setTimeout(() => {
+						this.closeModal()
+						window.location.reload()
+					}, 1500)
+				} else {
+					this.error = res
+					this.loading = false
+				}
 			},
 			closeModal() {
 				this.loading = false;
