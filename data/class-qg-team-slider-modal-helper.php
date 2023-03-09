@@ -82,7 +82,7 @@ class Qg_Team_Slider_Modal_Helpers
             wp_generate_attachment_metadata($attachment_id, $upload['file'])
         );
 
-        return wp_get_attachment_image_url($attachment_id);
+        return wp_get_attachment_image_url($attachment_id, 'full');
 
     }
 }
