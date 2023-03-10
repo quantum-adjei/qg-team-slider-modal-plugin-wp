@@ -112,7 +112,7 @@ class Qg_Team_Slider_Modal_Public
 		 */
 
 		// Vue js cdn
-		wp_enqueue_script($this->plugin_name . '-vue', "https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js", array(), $this->version, true);
+		wp_enqueue_script($this->plugin_name . '-vue', "https://unpkg.com/vue/dist/vue.global.prod.js", array(), $this->version, true);
 
 		// vuetify js cdn
 		wp_enqueue_script($this->plugin_name . '-vuetifyJS', "https://cdn.jsdelivr.net/npm/vuetify@3.0.5/dist/vuetify.min.js", array(), $this->version, true);
